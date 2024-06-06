@@ -1,3 +1,6 @@
+//紅綠燈 traffic light
+//20240507
+
 //紅綠燈控制
 int redled =10; 
 int yellowled =7;

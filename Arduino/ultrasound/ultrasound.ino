@@ -1,4 +1,6 @@
-// 超聲波感測器
+// 超聲波感測器 Ultrasound
+//20240521
+
 int const tonePin = 2;
 int const trigPin = 13;
 int const echoPin = 12;
@@ -8,7 +10,7 @@ int Distance;
 
 void setup() {
   Serial.begin(9600);
-  
+
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   digitalWrite(trigPin, LOW);

@@ -1,3 +1,6 @@
+//光敏電阻搭配LED亮滅
+//20240507
+
 const byte analogPin = A0;
 const byte LED = 2;
 
