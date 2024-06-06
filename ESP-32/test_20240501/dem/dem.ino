@@ -1,0 +1,59 @@
+#include <FastLED.h>
+
+#define LED_PIN 4
+#define NUM_LEDS 25
+#define BRIGHTNESS 64
+#define LED_TYPE WS2811
+#define COLOR_ORDER RGB
+CRGB leds[NUM_LEDS];
+
+const uint32_t ledarray0[]  = {
+0x00000000, 0x00000000, 0x00FF0000, 0x00000000, 0x00000000, 
+0x00000000, 0x00FF0000, 0x00FF0000, 0x00000000, 0x00000000, 
+0x00000000, 0x00000000, 0x00FF0000, 0x00000000, 0x00000000, 
+0x00000000, 0x00000000, 0x00FF0000, 0x00000000, 0x00000000, 
+0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000, 0x00FF0000, 
+};
+
+const uint32_t ledarray1[]  = {
+0x00000000, 0x000000FF, 0x000000FF, 0x000000FF, 0x00000000, 
+0x000000FF, 0x00000000, 0x00000000, 0x000000FF, 0x00000000, 
+0x00000000, 0x00000000, 0x000000FF, 0x00000000, 0x00000000, 
+0x00000000, 0x000000FF, 0x00000000, 0x00000000, 0x00000000, 
+0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 
+};
+
+const uint32_t ledarray2[] PROGMEM = {
+0x00000000, 0x00FF0000, 0x00FF8080, 0x00FF8040, 0x00000000, 
+0x00000000, 0x00000000, 0x00000000, 0x00FFFF00, 0x00000000, 
+0x00000000, 0x0044FF44, 0x0088FF88, 0x0000FF40, 0x00000000, 
+0x00000000, 0x00000000, 0x00000000, 0x000000FF, 0x00000000, 
+0x00000000, 0x00FFFFFF, 0x00FF80FF, 0x008000FF, 0x00000000, 
+};
+
+
+
+void setup() {
+  delay(3000);  // power-up safety delay
+  FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS)
+    .setCorrection(TypicalLEDStrip);
+  FastLED.setBrightness(BRIGHTNESS);
+}
+
+void loop() {
+  for (int i = 0; i < 25; i++) {
+    leds[i] = ledarray0[i];
+  }
+  FastLED.show();
+  delay(500);
+  for (int i = 0; i < 25; i++) {
+    leds[i] = ledarray1[i];
+  }
+  FastLED.show();
+  delay(500);
+  for (int i = 0; i < 25; i++) {
+    leds[i] = ledarray2[i];
+  }
+  FastLED.show();
+  delay(500);
+}
